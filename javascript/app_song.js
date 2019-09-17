@@ -23,22 +23,6 @@ $(document).ready(function () {
     }); 
 
         $('#add-to-queue-modal').modal('open');
-        
+       
     })
-    
-    
-    
-
-    // function callSongs() {
-    //     let queryURL = ' '
-
-    //     $.ajax({
-    //         url: queryURL,
-    //         method: "GET"
-    //     }).then(function(response) {
-
-    //     });
-    // };
-
-    // callSongs();
 });
