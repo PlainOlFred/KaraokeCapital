@@ -87,15 +87,16 @@ $(document).ready(function () {
 
     //getPositionForAddress("2405 Robert Dedman Drive Austin TX 78712");
 
-    $("#search-form").on('submit', function(event) {
+    $("#search-form").on('change', function(event) {
         event.preventDefault();
         let address = $('#search').val();
         console.log();
-        
+    
         let formattedAddress = address.replace(/,/g, "");
         
         getPositionForAddress(formattedAddress);
-    
+
+        $('#search')[0].value = ' '
     });
     
 });

@@ -10,7 +10,7 @@ $(document).ready(function () {
     $('#song-search').on('change', function(){
         let songSearch = $(this)[0].value;
         callSongs(songSearch);
-        $(this)[0].value = ' '
+        $(this)[0].value = ' ';
     })
 
     //get lyrics
@@ -55,7 +55,8 @@ $(document).ready(function () {
 
     
    
-
+    // MODALS
+    // 
     // open  add song modal
     $('#song-collection').on('click', '.addBtn', function(e){
         e.stopPropagation();
