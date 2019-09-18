@@ -7,44 +7,40 @@ $(document).ready(function () {
 
     //populate by song
     $('#song-search').change(function(){
-        let urlSong =`https://deezerdevs-deezer.p.rapidapi.com/track/${song}`;
-        $.ajax({
-        url: urlSong,
-        method: 'GET',
-        headers: {
-            "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-            "x-rapidapi-key": "7e5a34b3cfmshc5b7f554f6185efp1d35edjsna7c7811d870d"
-        }
-        }).then(function(response){
-        console.log(response)
-        })
-
+       let songSearch = $(this).val().tirm().replace(/ /, '')
+       
     })
       
     
 
 
-    function callSongs() {
+    function callSongs(songSearch) {
+        let search = songSearch
         //let type = $(this).attr("data-type");
         //let queryURL = "https://api.genius.com/search?access_token=0JAdOqbjDowpcohj8tFFZNaINIzaPLciE_i7JiXoaqzrvIMqMXtgTPZU87HJnuDn&q=" + type;
         let token = "0JAdOqbjDowpcohj8tFFZNaINIzaPLciE_i7JiXoaqzrvIMqMXtgTPZU87HJnuDn"
-        let queryURL = "https://api.genius.com/search?access_token=" + token + "&q=weezer";
+        let queryURL = "https://api.genius.com/search?access_token=" + token + `&q=${search}`;
 
         $.ajax({
             url:queryURL,
             method: "GET",
             dataType: 'json',
         }).then(function(response) {
-            $(".collection").text(JSON.stringify(response));
-            //then(function(data) {
-                // fetch(response.hits.map(function(hit) {
-                // }));
-            //});
-            console.log(response);
+            let hits =response.response['hits']
+            console.log(hits)
+            for(let i = 0; i<hits.length; i++){
+                let song = hits[i]['result']['title']
+                let artist = hits[i].result.primary_artist['name']
+                let cover =hits[i].result['song_art_image_thumbnail_url']
+
+                let ava = new Avatar(song, artist, cover)
+                ava.createAva()
+            }
         });
     };
-    callSongs();
-})
+    let songSearch = 'blink 182'
+    callSongs(songSearch);  
+    
     
 
     //populate by artist
@@ -62,19 +58,10 @@ $(document).ready(function () {
             dismissible: false,
             onCloseEnd: function(){ 
             //send data to database
-            console.log(song)
-              
-        }
-
-    }); 
-<<<<<<< HEAD
-
+            console.log(song) 
+            }
+        }); 
         $('#add-to-queue-modal').modal('open');
-       
-    })
+    }); 
 });
-=======
-        $('#add-to-queue-modal').modal('open');  
-    })
-});
->>>>>>> 0cf6c7c8e1570381902f882ecc3185ef98a42fcf
+    
