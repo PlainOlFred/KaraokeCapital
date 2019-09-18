@@ -6,16 +6,15 @@ $(document).ready(function () {
     $('#add-to-queue-modal').modal();
 
     //populate by song
-    $('#song-search').change(function(){
-       let songSearch = $(this)[0].value;
-       
-       callSongs(songSearch);
-       console.log(songSearch);
+   
+    $('#song-search').on('change', function(){
+        console.log('fuck')
+        let songSearch = $(this)[0].value;
+        callSongs(songSearch);
+        $(this)[0].value = ' '
     })
-      
     
-    
-
+    //api request
     function callSongs(songSearch) {
         let search = songSearch
         let token = "0JAdOqbjDowpcohj8tFFZNaINIzaPLciE_i7JiXoaqzrvIMqMXtgTPZU87HJnuDn"
@@ -29,21 +28,19 @@ $(document).ready(function () {
             let hits =response.response['hits']
             console.log(hits)
             for(let i = 0; i<hits.length; i++){
-                let song = hits[i]['result']['title']
-                let artist = hits[i].result.primary_artist['name']
-                let cover =hits[i].result['song_art_image_thumbnail_url']
+                let song = hits[i].result['title'];
+                let artist = hits[i].result['primary_artist']['name'];
+                let cover = hits[i].result['song_art_image_thumbnail_url'];
+                let lyrics =  hits[i].result['path'];
                 
                 //New Avatar
-                let ava = new Avatar(song, artist, cover)
-
-                let avaItem = ava.createAva()
-
-                // $('#song-collection').prepend(avaItem);
+                let ava = new Avatar(song, artist, cover);
+                console.log(ava);
+                let avaItem = ava.createAva();
+                $('#song-collection').prepend(avaItem);
             }
         });
     };
-    // let songSearch = 'blink 182'
-    // callSongs(songSearch);  
     
     
 
@@ -55,16 +52,12 @@ $(document).ready(function () {
         let song = $(this).attr('data-song');
         let artist = $(this).attr('data-artist');
         let cover = $(this).attr('data-cover');
-        // let lyrics
-       
-
-
+    
 
         //add to UpNext on close
         $('#add-to-queue-modal').modal({
             dismissible: false,
             onCloseEnd: function(){ 
-            //send data to database
             console.log(song) 
             }
         }); 
@@ -75,6 +68,10 @@ $(document).ready(function () {
             console.log(song);
             console.log(artist);
             console.log(cover)
+            //
+            //fire here with these varibles
+
+
         })
     }); 
 });
