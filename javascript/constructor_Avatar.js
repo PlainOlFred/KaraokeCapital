@@ -28,5 +28,6 @@ Avatar.prototype.createAva = function(){
     avaItem.append([img, songBlock, artistBlock]);
         
     constructCount++;
-    $('#song-collection').prepend(avaItem);
+    // $('#song-collection').prepend(avaItem);
+    return avaItem;
 }
