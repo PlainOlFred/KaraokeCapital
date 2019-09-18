@@ -14,11 +14,12 @@ $(document).ready(function () {
     
 
 
-    function callSongs() {
+    function callSongs(songSearch) {
+        let search = songSearch
         //let type = $(this).attr("data-type");
         //let queryURL = "https://api.genius.com/search?access_token=0JAdOqbjDowpcohj8tFFZNaINIzaPLciE_i7JiXoaqzrvIMqMXtgTPZU87HJnuDn&q=" + type;
         let token = "0JAdOqbjDowpcohj8tFFZNaINIzaPLciE_i7JiXoaqzrvIMqMXtgTPZU87HJnuDn"
-        let queryURL = "https://api.genius.com/search?access_token=" + token + "&q=weezer";
+        let queryURL = "https://api.genius.com/search?access_token=" + token + `&q=${search}`;
 
         $.ajax({
             url:queryURL,
