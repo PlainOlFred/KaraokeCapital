@@ -18,6 +18,9 @@
     .hide-on-med-and-down{
       margin-right:25px;
     }
+    #address-container{
+      overflow: scroll;
+    }
   </style>
 </head>
 
@@ -47,25 +50,27 @@
     <li><a href="history.html">History</a></li>
   </ul>
 
-  <div class="container">
-    <h4>Karaoke Near You</h4>
+  
+   
     <!-- search bar -->
-    <div class="row section">
-      <div class="col s12">
-        <nav>
-            <div class="nav-wrapper">
-                <form id="search-form">
-                  <div class="input-field">
-                    <input id="search" type="text" value="" required>
-                    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-                    <i class="material-icons">close</i>
-                  </div>
-                </form>
-            </div>
-        </nav>
-      </div> 
-    </div>
-
+    <div class="container">
+        <h4>Karaoke Near You</h4>
+        <div class="row section">
+            <div class="col s12">
+                <nav>
+                    <div class="nav-wrapper">
+                        <form onSubmit="return false"  id="search-form" class="song-search-form">
+                            <div class="input-field">
+                                <input id="search" type="search" value="" required>
+                                <label class="label-icon" for="search"><i class="material-icons">place</i></label>
+                                <i class="material-icons">close</i></div>
+                        </form>
+                    </div>
+                </nav>
+            </div> 
+        </div>
+    
+  <div id="address-container">
     <div class="row">
       <div class="col s12">
           <table id="address-table" class="table">
