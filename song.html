@@ -58,22 +58,8 @@
                     <div class="nav-wrapper">
                         <form>
                             <div class="input-field">
-                                <input  id="song-search" type="text" class="validate">
-                                <label for="song-search"><i class="material-icons">audiotrack</i></label>
-                            </div>
-                        </form>
-                    </div>
-                </nav>
-            </div> 
-        </div>
-        <div class="row section">
-            <div class="col s12">
-                <nav>
-                    <div class="nav-wrapper">
-                        <form>
-                            <div class="input-field">
-                                <input id="artist-search" type="search">
-                                <label class="label-icon" for="search"><i class="material-icons">person_outline</i></label>
+                                <input id="song-search" type="search">
+                                <label class="label-icon" for="search"><i class="material-icons">audiotrack</i></label>
                                 <i class="material-icons">close</i>
                             </div>
                         </form>
@@ -105,11 +91,8 @@
           <p class="text-flow">Song added to Up Next</p>
         </div>
         <div class="modal-footer">
-          <a onclick="M.toast({html: 'Song Added to Up Next queue'})" href="#!" id="okay-add-song" class="modal-close waves-effect waves-green btn-flat">Okay</a>
-          <a onclick="M.toast({html: 'Song Removed'})" href="#!" id="remove-add-song" class="modal-close waves-effect waves-green btn-flat">Remove</a>
-          <a href="#!" id="cancel-add-song" class="modal-close waves-effect waves-green btn-flat">Canceled</a>
-
-
+          <a onclick="M.toast({html: 'Song Added to Up Next queue'})" href="#!" id="add-song" class="modal-close waves-effect waves-green btn-flat">Add</a>
+          <a href="#!" id="cancel-add-song" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
         </div>
       </div>
 

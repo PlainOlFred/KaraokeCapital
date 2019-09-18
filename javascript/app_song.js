@@ -7,17 +7,17 @@ $(document).ready(function () {
 
     //populate by song
     $('#song-search').change(function(){
-       let songSearch = $(this).val().tirm().replace(/ /, '')
+       let songSearch = $(this)[0].value;
        
+       callSongs(songSearch);
+       console.log(songSearch);
     })
       
     
-
+    
 
     function callSongs(songSearch) {
         let search = songSearch
-        //let type = $(this).attr("data-type");
-        //let queryURL = "https://api.genius.com/search?access_token=0JAdOqbjDowpcohj8tFFZNaINIzaPLciE_i7JiXoaqzrvIMqMXtgTPZU87HJnuDn&q=" + type;
         let token = "0JAdOqbjDowpcohj8tFFZNaINIzaPLciE_i7JiXoaqzrvIMqMXtgTPZU87HJnuDn"
         let queryURL = "https://api.genius.com/search?access_token=" + token + `&q=${search}`;
 
@@ -32,14 +32,18 @@ $(document).ready(function () {
                 let song = hits[i]['result']['title']
                 let artist = hits[i].result.primary_artist['name']
                 let cover =hits[i].result['song_art_image_thumbnail_url']
-
+                
+                //New Avatar
                 let ava = new Avatar(song, artist, cover)
-                ava.createAva()
+
+                let avaItem = ava.createAva()
+
+                // $('#song-collection').prepend(avaItem);
             }
         });
     };
-    let songSearch = 'blink 182'
-    callSongs(songSearch);  
+    // let songSearch = 'blink 182'
+    // callSongs(songSearch);  
     
     
 
@@ -50,8 +54,11 @@ $(document).ready(function () {
     $('#song-collection').on('click', '.avatar', function(){
         let song = $(this).attr('data-song');
         let artist = $(this).attr('data-artist');
-       console.log(song);
-       console.log(artist);
+        let cover = $(this).attr('data-cover');
+        // let lyrics
+       
+
+
 
         //add to UpNext on close
         $('#add-to-queue-modal').modal({
@@ -60,11 +67,15 @@ $(document).ready(function () {
             //send data to database
             console.log(song) 
             }
-
         }); 
-
         $('#add-to-queue-modal').modal('open');
-       
-    })
-    
+        
+        $('#add-song').on('click', function(){
+            console.log('firebase')
+            console.log(song);
+            console.log(artist);
+            console.log(cover)
+        })
+    }); 
 });
+    

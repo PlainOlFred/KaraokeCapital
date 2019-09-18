@@ -25,10 +25,8 @@ Avatar.prototype.createAva = function(){
     songBlock.text(this.song);
     let artistBlock = $('<p>');
     artistBlock.text(this.artist);
-    avaItem.append([img, songBlock,artistBlock]);
+    avaItem.append([img, songBlock, artistBlock]);
         
-    $('#song-collection').prepend(avaItem);
-    // local storage
-    // localStorage.setItem(`Ava-${constructCount}`, avaItem)
     constructCount++;
+    $('#song-collection').prepend(avaItem);
 }
