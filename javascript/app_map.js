@@ -2,6 +2,7 @@ $(document).ready(function () {
     $('.carousel').carousel();
     $('.sidenav').sidenav();
 
+    //gets position for map
     function getPositionForAddress(address) {
         let apiKey = "90e9rkuEupM3gLfROkv1nrNqGj6iBeCH";
         let maxNumRecordsReturned = 1;
@@ -21,6 +22,7 @@ $(document).ready(function () {
         });
     };
 
+    //gets latitude and longitude
     function getNearByPlaces(latitude, longitude) {
         let apiKey = "90e9rkuEupM3gLfROkv1nrNqGj6iBeCH";
         var queryURL = `https://api.tomtom.com/search/2/search/karaoke.json?key=${apiKey}&lat=${latitude}&lon=${longitude}`;
@@ -70,6 +72,7 @@ $(document).ready(function () {
         });
     };
 
+    //shows map
     function generateQueryString(name, address) {
         let baseUrl = "https://www.google.com/maps/search/?api=1&query=";
 
@@ -80,10 +83,22 @@ $(document).ready(function () {
         const queryString = `${baseUrl}${formattedName}+${formattedAddress}`;
 
         return queryString;
-    }
+    };
 
     //getPositionForAddress("2405 Robert Dedman Drive Austin TX 78712");
-  });
+
+    $("#search-form").on('submit', function(event) {
+        event.preventDefault();
+        let address = $('#search').val();
+        console.log();
+        
+        let formattedAddress = address.replace(/,/g, "");
+        
+        getPositionForAddress(formattedAddress);
+    
+    });
+    
+});
 
 
 //SEARCH FUNCTIONS
