@@ -8,12 +8,21 @@ $(document).ready(function () {
     //populate by song
    
     $('#song-search').on('change', function(){
-        console.log('fuck')
         let songSearch = $(this)[0].value;
         callSongs(songSearch);
         $(this)[0].value = ' '
     })
+
+    //get lyrics
+    $('.lyricBtn').on('clicked', function(e){
+        e.stopPropagation();
+        console.log('lyrics')
+    })
     
+    $('body').on('click', '.lyricBtn', function(e){
+        e.stopPropagation();    
+      });
+
     //api request
     function callSongs(songSearch) {
         let search = songSearch
@@ -34,7 +43,7 @@ $(document).ready(function () {
                 let lyrics =  hits[i].result['path'];
                 
                 //New Avatar
-                let ava = new Avatar(song, artist, cover);
+                let ava = new Avatar(song, artist, cover, lyrics);
                 console.log(ava);
                 let avaItem = ava.createAva();
                 $('#song-collection').prepend(avaItem);
@@ -44,14 +53,16 @@ $(document).ready(function () {
     
     
 
-    //populate by artist
+    
    
 
-    // open modal
-    $('#song-collection').on('click', '.avatar', function(){
-        let song = $(this).attr('data-song');
-        let artist = $(this).attr('data-artist');
-        let cover = $(this).attr('data-cover');
+    // open  add song modal
+    $('#song-collection').on('click', '.addBtn', function(e){
+        e.stopPropagation();
+        let song = $(this).parent().attr('data-song');
+        let artist = $(this).parent().attr('data-artist');
+        let cover = $(this).parent().attr('data-cover');
+        let lyrics = $(this).parent().attr('data-lyrics');
     
 
         //add to UpNext on close
@@ -68,6 +79,43 @@ $(document).ready(function () {
             console.log(song);
             console.log(artist);
             console.log(cover)
+            console.log(lyrics)
+            //
+            //fire here with these varibles
+
+
+        })
+    }); 
+
+
+    //Open Lyrics Modal
+    $('#song-collection').on('click', '.lyricsBtn', function(){
+       
+        let song = $(this).parent().attr('data-song');
+        let artist = $(this).parent().attr('data-artist');
+        let cover = $(this).parent().attr('data-cover');
+        let lyric = $(this).parent().attr('data-lyrics');
+    
+
+        
+        $('#lyric-modal').modal({
+            dismissible: false,     
+        }); 
+        $('#lyric-modal').modal('open');
+        
+        $('#lyric-modal-title').text(song);
+        $('#lyric-modal-artist').text(artist);
+        //use this link to display lyrics
+        let lyricLink = $(`<a>${song}</a>`);
+        lyricLink.attr('href','https://genius.com/'+lyric);
+        $('#lyric-display').append(lyricLink);
+        
+        $('#add-song').on('click', function(){
+            console.log('firebase')
+            console.log(song);
+            console.log(artist);
+            console.log(cover)
+            console.log(lyrics)
             //
             //fire here with these varibles
 

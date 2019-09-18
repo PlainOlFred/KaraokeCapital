@@ -1,8 +1,9 @@
 let constructCount = 0;
-function Avatar(song, artist, cover){
+function Avatar(song, artist, cover, lyrics){
     this.song =song;
     this.artist = artist;
     this.cover = cover;
+    this.lyrics = lyrics;
 }
 Avatar.prototype.createAva = function(){
     let avaItem = $('<li>');
@@ -11,7 +12,8 @@ Avatar.prototype.createAva = function(){
         'data-song' : this.song,
         'data-artist' : this.artist,
         'data-cover' : this.cover,
-        'id' : 'ava-'+constructCount
+        'data-lyrics' : this.lyrics,
+        'id' : 'ava-' + constructCount
     });
 
     let img = $('<img>');
@@ -25,9 +27,23 @@ Avatar.prototype.createAva = function(){
     songBlock.text(this.song);
     let artistBlock = $('<p>');
     artistBlock.text(this.artist);
-    avaItem.append([img, songBlock, artistBlock]);
+
+    //add Button
+    let addBtn = $('<button>Add</button>');
+    addBtn.attr({
+        'class' : 'secondary-content addBtn'
+    })
+    //lyrics Button
+    let lyricsBtn = $('<button>Lyrics</button>').addClass('lyricsBtn');
+   
+    
+    
+    
+    
+    
+
+    avaItem.append([img, songBlock, artistBlock, addBtn, lyricsBtn]);
         
     constructCount++;
-    // $('#song-collection').prepend(avaItem);
     return avaItem;
 }
