@@ -67,11 +67,9 @@ $(document).ready(function () {
 
         //add to UpNext on close
         $('#add-to-queue-modal').modal({
-            dismissible: false,
-            onCloseEnd: function(){ 
-            console.log(song) 
-            }
+            dismissible: false
         }); 
+
         $('#add-to-queue-modal').modal('open');
         
         $('#add-song').on('click', function(){
@@ -84,7 +82,7 @@ $(document).ready(function () {
             //fire here with these varibles
 
 
-        })
+        });
     }); 
 
 
@@ -99,28 +97,29 @@ $(document).ready(function () {
 
         
         $('#lyric-modal').modal({
-            dismissible: false,     
+            dismissible: false,
+            style: 'position: relative; height: 1000px'    
         }); 
         $('#lyric-modal').modal('open');
         
         $('#lyric-modal-title').text(song);
         $('#lyric-modal-artist').text(artist);
+        $('#lyric-modal-image').attr({
+            src : cover,
+            style: 'height: 150px; position : absolute; top : 0px; right: 0px'
+        })
         //use this link to display lyrics
         let lyricLink = $(`<a>${song}</a>`);
-        lyricLink.attr('href','https://genius.com/'+lyric);
+        lyricLink.attr({
+            'href' : 'https://genius.com/'+lyric,
+            'target' : '_blank' 
+        });
+        $('#lyric-display').attr({
+            style: 'height: 200%; position: relative; top: 40px'
+        })
         $('#lyric-display').append(lyricLink);
         
-        $('#add-song').on('click', function(){
-            console.log('firebase')
-            console.log(song);
-            console.log(artist);
-            console.log(cover)
-            console.log(lyrics)
-            //
-            //fire here with these varibles
-
-
-        })
+        
     }); 
 });
     
