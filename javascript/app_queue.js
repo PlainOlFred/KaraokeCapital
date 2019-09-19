@@ -2,6 +2,7 @@ $(document).ready(function () {
     $('.carousel').carousel();
     $('.sidenav').sidenav();
     $('#perfom-song-modal').modal();
+    $('#clear-all-modal').modal();
     let queue = [];
 
    
@@ -33,6 +34,8 @@ $(document).ready(function () {
    
 
     toQueueDB.on("child_added", function(snapshot) {
+        $('#clear-modal-btn').css('display','block')
+
 
         let song= snapshot.val()[0];
         let artist = snapshot.val()[1];
@@ -42,7 +45,6 @@ $(document).ready(function () {
         let ava = new Avatar(song, artist, cover, lyric);
         let avaItem = ava.createQueueAva();
         $('#queue-collection').prepend(avaItem);
-        
         
         
         //Catch error
@@ -75,16 +77,35 @@ $(document).ready(function () {
             console.log('no');
         });
         $('#remove-song').on('click', function(){
+           console.log(toQueueDB);
+           
+        });
+           
+    })
 
-          
-            
+    //clear modal
+    $('#clear-modal-btn').on('click', function(e){
+        e.stopPropagation();
+        
+        $('#clear-all-modal').modal({
+            dismissible: false
+        }); 
+        $('#clear-all-modal').modal('open');
 
-        })
+        let currentSong = $(this).parent();
         
 
 
+        $('#clear-all-song').on('click', function(){
+           console.log(toQueueDB);
+           let removeThis =firebase.database().ref('toQueue');
+           toQueueDB.remove();
+           location.reload();
+           $('#clear-modal-btn').css('display','none')
 
-    })
+        });
+           
+    });
 
     //lyric modal
     $('#queue-collection').on('click', '.lyricsBtn', function(){
@@ -127,10 +148,4 @@ $(document).ready(function () {
     }); 
     
 
-
-    
-
-   
-
-   
 });

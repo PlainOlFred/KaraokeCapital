@@ -70,7 +70,10 @@ $(document).ready(function () {
         let lyric = $(this).parent().attr('data-lyrics');
        
         $('#add-to-queue-modal').modal({
-            dismissible: false
+            dismissible : false,
+            onCloseEnd : function(){
+                location.reload();
+            }
         }); 
         $('#add-to-queue-modal').modal('open');
 
@@ -87,6 +90,7 @@ $(document).ready(function () {
             toQueueDB.push(avaData);
             
         });
+        
     }); 
 
 
