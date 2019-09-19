@@ -40,11 +40,12 @@
             </div>
         </nav>
     </div>
+   
     <!-- mobile navbar -->
     <ul class="sidenav" id="sidenav-menu">
         <li><a href="index.html">Home</a></li>
-        <li><a href="songpage.html">Find Songs</a></li>
-        <li><a href="placepage.html">Find Places</a></li>
+        <li><a href="song.html">Find Songs</a></li>
+        <li><a href="map.html">Find Places</a></li>
         <li><a href="queue.html">Up Next</a></li>
         <li><a href="history.html">History</a></li>
     </ul>
@@ -67,23 +68,22 @@
 
     <!-- Add song modal -->
     <div id="add-song-modal" class="modal">
-            <div class="modal-content">
-            <h6>Add Song to History</h6>
-            <p class="text-flow">Did you perform this song?</p>
-            </div>
-            <div class="modal-footer">
-            <a onclick="M.toast({html: 'Song Added to History'})" href="#!" class="modal-close waves-effect waves-green btn-flat">Yes</a>
+        <div class="modal-content">
+        <h6>Add Song to History</h6>
+        <p class="text-flow">Did you perform this song?</p>
         </div>
+        <div class="modal-footer">
+        <a onclick="M.toast({html: 'Song Added to History'})" href="#!" class="modal-close waves-effect waves-green btn-flat">Yes</a>
         </div>
+    </div>
 
-    <!-- JavaScript     -->
+    <!-- JavaScript-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript" src="javascript/app_queue.js"></script>
     <script type="text/javascript" src="javascript/app_song.js"></script>
     <script type="text/javascript" src="javascript/constructor_Avatar.js"></script>
     
-
 </body>
 
 </html>
