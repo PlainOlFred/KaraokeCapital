@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-
     $('.carousel').carousel();
     $('.sidenav').sidenav();
     $('#add-to-queue-modal').modal();
@@ -22,7 +21,7 @@ $(document).ready(function () {
     
     $('body').on('click', '.lyricBtn', function(e){
         e.stopPropagation();    
-      });
+    });
 
     //api request
     function callSongs(songSearch) {
@@ -36,7 +35,7 @@ $(document).ready(function () {
             dataType: 'json',
         }).then(function(response) {
             let hits =response.response['hits']
-            console.log(hits)
+            //console.log(hits)
             for(let i = 0; i<hits.length; i++){
                 let song = hits[i].result['title'];
                 let artist = hits[i].result['primary_artist']['name'];
@@ -45,17 +44,14 @@ $(document).ready(function () {
                 
                 //New Avatar
                 let ava = new Avatar(song, artist, cover, lyrics);
-                console.log(ava);
+                //console.log(ava);
                 let avaItem = ava.createAva();
-                $('#song-collection').prepend(avaItem);
+                $('#song-collection').append(avaItem);
             }
+
         });
     };
     
-    
-
-    
-   
     // MODALS
     // 
     // open  add song modal
@@ -66,24 +62,29 @@ $(document).ready(function () {
         let cover = $(this).parent().attr('data-cover');
         let lyrics = $(this).parent().attr('data-lyrics');
     
-
         //add to UpNext on close
         $('#add-to-queue-modal').modal({
             dismissible: false
         }); 
 
         $('#add-to-queue-modal').modal('open');
-        
+
+        //add song to queue
         $('#add-song').on('click', function(){
-            console.log('firebase')
-            console.log(song);
-            console.log(artist);
-            console.log(cover)
-            console.log(lyrics)
-            
+            let ava = new Avatar(song, artist, cover, lyrics);
+            let avaItem = ava.createAva();
+            // console.log('firebase')
+            // console.log(song);
+            // console.log(artist);
+            // console.log(cover)
+            // console.log(lyrics)
+
             //fire here with these varibles
             savePerformance(song, artist);
 
+            console.log('this was clicked');
+            console.log(avaItem)
+            localStorage.setItem($('#queue-collection-test').append(avaItem)); //nonfunctional
         });
     }); 
 
@@ -95,9 +96,7 @@ $(document).ready(function () {
         let artist = $(this).parent().attr('data-artist');
         let cover = $(this).parent().attr('data-cover');
         let lyric = $(this).parent().attr('data-lyrics');
-    
 
-        
         $('#lyric-modal').modal({
             dismissible: false,
             style: 'position: relative; height: 1000px'    
@@ -120,7 +119,6 @@ $(document).ready(function () {
             style: 'height: 200%; position: relative; top: 40px'
         })
         $('#lyric-display').append(lyricLink);
-        
         
     }); 
 

@@ -36,11 +36,6 @@ Avatar.prototype.createAva = function(){
     //lyrics Button
     let lyricsBtn = $('<button>Lyrics</button>').addClass('lyricsBtn');
    
-    
-    
-    
-    
-    
 
     avaItem.append([img, songBlock, artistBlock, addBtn, lyricsBtn]);
         

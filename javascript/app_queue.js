@@ -26,15 +26,9 @@ $(document).ready(function () {
         $("history-collection").prepend("<div class='row'>"+spotifySong+"</div>");
     }); 
 
-    // LOADS USER QUEUE
-    // function loadQueue() {
-
-    // review how to add something to "favorites"
-    // get and display songs from firebase
-    // };
-
-    // loadQueue();
-
+    function loadData(){
+        document.getElementById("result").innerHTML = localStorage.getItem(avaItem); //nonfunctional
+    };
 
     ////////////////////FIREBASE///////////////////
     
@@ -96,4 +90,6 @@ $(document).ready(function () {
         // In case of error this will print the error
         console.log("The read failed: " + errorObject.code);
     });
+    
+    loadData();
 });
