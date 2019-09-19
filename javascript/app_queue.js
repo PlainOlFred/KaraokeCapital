@@ -27,7 +27,7 @@ $(document).ready(function () {
     }); 
 
     function loadData(){
-        console.log(avaItem);
+        document.getElementById("result").innerHTML = localStorage.getItem(avaItem); //nonfunctional
     };
 
     loadData();

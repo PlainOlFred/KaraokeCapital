@@ -80,8 +80,7 @@ $(document).ready(function () {
             // console.log(lyrics)
             console.log('this was clicked');
             console.log(avaItem)
-
-            $('#queue-collection-test').append(avaItem);
+            localStorage.setItem($('#queue-collection-test').append(avaItem)); //nonfunctional
         });
     }); 
 
