@@ -102,7 +102,12 @@ $(document).ready(function () {
             style: 'position: relative; height: 1000px'    
         }); 
         $('#lyric-modal').modal('open');
-        
+        $('#lyric-modal-title').empty();
+        $('#lyric-modal-artist').empty();
+        $('#lyric-modal-image').empty();
+        $('#lyric-display').empty();
+
+
         $('#lyric-modal-title').text(song);
         $('#lyric-modal-artist').text(artist);
         $('#lyric-modal-image').attr({
@@ -112,13 +117,15 @@ $(document).ready(function () {
         //use this link to display lyrics
         let lyricLink = $(`<a>${song}</a>`);
         lyricLink.attr({
-            'href' : 'https://genius.com/'+lyric,
+            'href' : 'https://genius.com'+lyric,
             'target' : '_blank' 
         });
         $('#lyric-display').attr({
             style: 'height: 200%; position: relative; top: 40px'
         })
         $('#lyric-display').append(lyricLink);
+
+
         
     }); 
 
