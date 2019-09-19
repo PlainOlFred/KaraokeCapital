@@ -41,6 +41,8 @@ Avatar.prototype.createAva = function(){
     constructCount++;
     return avaItem;
 }
+
+
 //Avater for songs in Queue
 Avatar.prototype.createQueueAva = function(){
     let avaItem = $('<li>');
