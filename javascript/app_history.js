@@ -25,6 +25,8 @@ $(document).ready(function() {
     // Setting initial value
     let listOfPerformances = [];
     let listOfLocations = [];
+    let performanceCount = 0;
+    let venueCount =0;
   
     // FUNCTIONS + EVENTS
     // --------------------------------------------------------------------------------
@@ -34,6 +36,20 @@ $(document).ready(function() {
     //     //Save Performances
     //     savePerformance("TestSong", "TestArtist");
     // });
+
+    //increase count of performances
+    $("#log-performance").on("click", function() {
+        performanceCount++;
+        console.log(performanceCount);
+        $("#performance-count").text(performanceCount);
+    });
+        
+    //increase count of venues attended
+    $("#log-venue").on("click", function() {
+        venueCount++;
+        console.log(venueCount);
+        $("#venue-count").text(venueCount);
+    });
 
     function savePerformance(song, artist) {
         let performanceRef;
