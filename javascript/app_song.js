@@ -8,6 +8,7 @@ $(document).ready(function () {
     //populate by song
    
     $('#song-search').on('change', function(){
+        $('#add-song-header').text("Choose the Songs to Sing");
         let songSearch = $(this)[0].value;
         callSongs(songSearch);
         $(this)[0].value = ' ';
@@ -79,9 +80,9 @@ $(document).ready(function () {
             console.log(artist);
             console.log(cover)
             console.log(lyrics)
-            //
+            
             //fire here with these varibles
-
+            savePerformance(song, artist);
 
         });
     }); 
@@ -122,5 +123,86 @@ $(document).ready(function () {
         
         
     }); 
+
+
+    /////////FIREBASE//////////
+  
+    function savePerformance(song, artist) {
+        var firebaseConfig = {
+            apiKey: "AIzaSyDU0dlAtMCVbQUIp5gsOgZBu7V20dMk5jc",
+            authDomain: "testerproject-c6e19.firebaseapp.com",
+            databaseURL: "https://testerproject-c6e19.firebaseio.com",
+            projectId: "testerproject-c6e19",
+            storageBucket: "testerproject-c6e19.appspot.com",
+            messagingSenderId: "928064114785",
+            appId: "1:928064114785:web:b67a6812bfee7365"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    
+        // Get a reference to the database service
+        var database = firebase.database();
+    
+        // Setting initial value
+        let listOfPerformances = [];
+
+
+        let performanceRef;
+
+        //Update count
+        if (listOfPerformances.length > 0) {
+
+            //Get performance if already in the list
+            var item = listOfPerformances.find(perf => perf.song === song);
+
+            //Update count on the list
+            if (item != null) {
+                item.count++;
+            }
+            //Add performance to list
+            else {
+                listOfPerformances.push({
+                key: null,
+                song: song,
+                artist: artist,
+                count: 1
+            });
+            }
+        }
+        //Add performance to list
+        else {
+            listOfPerformances.push({
+                key: null,
+                song: song,
+                artist: artist,
+                count: 1
+            });
+        }
+        
+        //Get item
+        var item = listOfPerformances.find(perf => perf.song === song);
+
+        //If there is no key, then it has not been added to firebase
+        //Create new key in firebase
+        if (item.key == null) {
+            performanceRef = database.ref('performance').push();
+            item.key = performanceRef.getKey();
+        }
+        //If there is a key, then it has been added to firebase
+        //Get existing key
+        else {
+            let refPath = "performance/" + item.key;
+            performanceRef = database.ref(refPath);
+        }
+
+        //Set the new performance to firebase
+        performanceRef.set({
+            key: item.key,
+            song: item.song,
+            artist: item.artist,
+            count: item.count
+        });
+    }
 });
     

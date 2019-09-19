@@ -53,7 +53,7 @@
 
     <!-- search bar -->
     <div class="container">
-        <h4>Add a Song to the Queue by Searching</h4>
+        <h4>Search By Song or Artist</h4>
         <div class="row section">
             <div class="col s12">
                 <nav>
@@ -71,6 +71,7 @@
 
         <!-- song collection -->
         <div class="row section">
+            <h4 id="add-song-header"></h4>
             <div class="col s12 section">
                 <ul id="song-collection" class="collection"></ul>
             </div>
@@ -114,6 +115,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript" src="javascript/app_song.js"></script>
     <script type="text/javascript" src="javascript/constructor_Avatar.js"></script>
+
+    <!-- Firebase Core JavaScript Link -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
+
+    <!-- Firebase Database -->
+    <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 </body>
 
 </html>
