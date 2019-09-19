@@ -5,16 +5,20 @@
 ### Welcome to CapCityKaraoke!
 
 For Karaoke novices and enthusiastics alike, use this website to:
-* Find hotspots for Karaoke in the Austin area
-* See what karaoke spots are "hot" based on all user activity and prefence
-* Use user spotify metrics to get a random song to sing based on your recent music tastes
+* See tweets about karaoke on our main page
+* Search songs to add to the "up next" page so that you can sing these later
+* Move these songs from your queue to history once they are sung
+* Search local karaoke hot spots using your full address
 
 #### Languages used
-* HMTL
+* HTML
 * Materialize
 * Javascript
-* Google Maps API
-* Spotify API
+* TomTom Maps API
+* Twitter API
+* Lyric Genius API
+* Firebase storage
+
 
 #### Parameters
 * At least 2 APIs
