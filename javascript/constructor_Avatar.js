@@ -30,12 +30,16 @@ Avatar.prototype.createAva = function(){
     artistBlock.text(this.artist);
 
     //add Button
-    let addBtn = $('<button>Add</button>');
+    let addBtn = $('<button><i class="material-icons">add</i></button>');
     addBtn.attr({
-        'class' : 'secondary-content addBtn'
+        'class' : 'secondary-content addBtn btn-floating btn-large waves-effect waves-light green'
     })
     //lyrics Button
     let lyricsBtn = $('<button>Lyrics</button>').addClass('lyricsBtn');
+    lyricsBtn.attr({
+        'class' : 'waves-effect waves-light btn-small'
+    })
+
     avaItem.append([img, songBlock, artistBlock, addBtn, lyricsBtn]);
         
     constructCount++;
@@ -68,10 +72,10 @@ Avatar.prototype.createQueueAva = function(){
     //Perform Button
     let performBtn = $('<button>Perform</button>');
     performBtn.attr({
-        'class' : 'secondary-content performBtn'
+        'class' : 'secondary-content performBtn waves-effect waves-light btn'
     })
     //lyrics Button
-    let lyricsBtn = $('<button>Lyrics</button>').addClass('lyricsBtn');
+    let lyricsBtn = $('<button>Lyrics</button>').addClass('lyricsBtn waves-effect waves-dark btn');
     avaItem.append([img, songBlock, artistBlock, performBtn, lyricsBtn]);
         
     constructCount++;

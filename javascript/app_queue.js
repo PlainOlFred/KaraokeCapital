@@ -78,7 +78,6 @@ $(document).ready(function () {
         });
         $('#remove-song').on('click', function(){
            console.log(toQueueDB);
-           
         });
            
     })
@@ -100,7 +99,6 @@ $(document).ready(function () {
            console.log(toQueueDB);
            let removeThis =firebase.database().ref('toQueue');
            toQueueDB.remove();
-           location.reload();
            $('#clear-modal-btn').css('display','none')
 
         });
