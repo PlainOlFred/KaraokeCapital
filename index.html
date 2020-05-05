@@ -81,65 +81,30 @@
     <div class="container">
         <h2>Welcome to</h2>
         <h1>Cap City Karaoke!</h1>
+
+        <ul class="song-list favorite-song"></ul>
         
-        <div class="row">
-            <div class="col s12"></div>
-            <div class="carousel tweets">
-                <div class="carousel-item">
-                    <div class="card sticky-action">
-                        <div class="card-image ">
-                            <img src="images/highball-karaoke.jpg">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="card sticky-action">
-                        <div class="card-image ">
-                            <img src="images/egos.jpg">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="card sticky-action">
-                        <div class="card-image ">
-                            <img src="images/karaoke1.jpg">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="card sticky-action">
-                        <div class="card-image ">
-                            <img src="images/karaoke2.jpg">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="card sticky-action">
-                        <div class="card-image ">
-                            <img src="images/karaoke3.jpg">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="carousel-item">
-                    <div class="card sticky-action">
-                        <div class="card-image ">
-                            <img src="images/karaoke4.jpg">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!--JavaScript-->
+
+        
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+  <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script type="text/javascript" src="./config/firebaseConfig.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" src="javascript/app_index.js"></script>
+    <script type="text/javascript" src="javascript/app.js"></script>
 </body>
 
 
