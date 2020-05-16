@@ -1,40 +1,66 @@
 $(document).ready(function () {
-  const userId = "0QRrkhbCmMaTiK1m1NoBKJM20DH3";
-
-
-
-
   const database = firebase.database();
-  const songsObj = database.ref("songs");
 
-  songsObj.on("value", function (snap) {
-    console.log(snap.val());
-  });
+  const topSongsElem = $("#index-song-collection");
 
-  function addSong(test) {
-    songsObj.child('favorite/mine').set({
-      test
-    })
+  const songListRef = database.ref("songs");
+
+  songListRef.on('value', function(snapshot) {
+
+    const songs = snapshot.val();
+    console.log(songs)
+
+
+    for(i in songs) {
+      let listItem;
+      let song = new Avatar(songs[i].name, songs[i].artist)
+      if (true) {
+        listItem = song.createPerformedAva()
+      } 
+      topSongsElem.append(listItem)
+    }
+
+
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function addSongToSongList(song) {
+    //song
+    songListRef.push(song)
+
+
   }
 
-addSong('test')
 
-  function removeSong() {}
 
-  function displaySongs() {}
 
-  function writeUserData(userId, name, email) {
-    firebase
-      .database()
-      .ref("users/" + userId + "/favor")
-      .set({
-        username: name,
-        email: email,
-      });
+  function updateSongOnSongList(name, data) {
+    songListRef.child(String(name)).set(data)
   }
 
-  writeUserData('212', "jeremy", 'example@test.com')
-
+  // addSongToSongList({
+  //   name: "song 1",
+  //   artist: "artist 2"
+  // })
 
 
 });

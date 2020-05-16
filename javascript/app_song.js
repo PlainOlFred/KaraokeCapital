@@ -4,18 +4,7 @@ $(document).ready(function () {
     $('.sidenav').sidenav();
     $('#add-to-queue-modal').modal();
 
-    var firebaseConfig = {
-        apiKey: "AIzaSyDU0dlAtMCVbQUIp5gsOgZBu7V20dMk5jc",
-        authDomain: "testerproject-c6e19.firebaseapp.com",
-        databaseURL: "https://testerproject-c6e19.firebaseio.com",
-        projectId: "testerproject-c6e19",
-        storageBucket: "testerproject-c6e19.appspot.com",
-        messagingSenderId: "928064114785",
-        appId: "1:928064114785:web:b67a6812bfee7365"
-    };
-    // Setting initial value
-    
-    //populate by song
+  
    
     $('#song-search').on('change', function(){
         $('#add-song-header').text("Choose the Songs to Sing");

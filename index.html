@@ -82,9 +82,42 @@
         <h2>Welcome to</h2>
         <h1>Cap City Karaoke!</h1>
 
-        <ul class="song-list favorite-song"></ul>
         
+
+        <!-- song collection -->
+        <div class="row section">
+            <h4>
+                Important Songs
+            </h4>
+            <div class="col s12 section">
+                <ul id="index-song-collection" class="collection"></ul>
+            </div>
+        </div>
+
     </div>
+
+
+    
+
+        <!-- lyric modal -->
+        <div id="lyric-modal" class="modal">
+            <div class="modal-content">
+                <h4 id="lyric-modal-title"></h4>
+                <h6 id="lyric-modal-artist" ></h6>
+                <img id="lyric-modal-image">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <div id="lyric-display" class="section"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" id="cancel-add-song" class="modal-close waves-effect waves-green btn-flat">Close</a>
+            </div>
+        </div>  
+    
 
     <!--JavaScript-->
 
@@ -104,6 +137,7 @@
     <script type="text/javascript" src="./config/firebaseConfig.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="javascript/constructor_Avatar.js"></script>
     <script type="text/javascript" src="javascript/app.js"></script>
 </body>
 

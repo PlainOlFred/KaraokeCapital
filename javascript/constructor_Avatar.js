@@ -1,11 +1,14 @@
 let constructCount = 0;
 
 function Avatar(song, artist, cover, lyrics){
+    
+
     this.song =song;
     this.artist = artist;
     this.cover = cover;
     this.lyrics = lyrics;
 }
+
 Avatar.prototype.createAva = function(){
     let avaItem = $('<li>');
     avaItem.attr({
@@ -23,6 +26,7 @@ Avatar.prototype.createAva = function(){
         'class' : 'circle', 
         
     });
+
     let songBlock = $('<span>');
     songBlock.attr('class', 'title');
     songBlock.text(this.song);
@@ -77,6 +81,39 @@ Avatar.prototype.createQueueAva = function(){
     //lyrics Button
     let lyricsBtn = $('<button>Lyrics</button>').addClass('lyricsBtn waves-effect waves-dark btn');
     avaItem.append([img, songBlock, artistBlock, performBtn, lyricsBtn]);
+        
+    constructCount++;
+    return avaItem;
+}
+
+Avatar.prototype.createPerformedAva = function(){
+    let avaItem = $('<li>');
+
+    avaItem.attr({
+        'class' : 'collection-item avatar',
+        'data-song' : this.song,
+        'data-artist' : this.artist,
+        'data-cover' : this.cover,
+        'data-lyrics' : this.lyrics,
+    });
+
+    let img = $('<img>');
+
+    img.attr({
+        'src' : this.cover,
+        'class' : 'circle',   
+    });
+
+    let songBlock = $('<span>');
+    songBlock.attr('class', 'title');
+    songBlock.text(this.song);
+    
+    let artistBlock = $('<p>');
+    artistBlock.text(this.artist);
+
+    //lyrics Button
+    let lyricsBtn = $('<button>Lyrics</button>').addClass('lyricsBtn waves-effect waves-dark btn');
+    avaItem.append([img, songBlock, artistBlock, lyricsBtn]);
         
     constructCount++;
     return avaItem;
