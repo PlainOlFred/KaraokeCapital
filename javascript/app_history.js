@@ -1,20 +1,6 @@
 $(document).ready(function() {
     $(".sidenav").sidenav();
 
-    // Initialize Firebase
-    // This is the code we copied and pasted from our app page
-    var firebaseConfig = {
-        apiKey: "AIzaSyDU0dlAtMCVbQUIp5gsOgZBu7V20dMk5jc",
-        authDomain: "testerproject-c6e19.firebaseapp.com",
-        databaseURL: "https://testerproject-c6e19.firebaseio.com",
-        projectId: "testerproject-c6e19",
-        storageBucket: "testerproject-c6e19.appspot.com",
-        messagingSenderId: "928064114785",
-        appId: "1:928064114785:web:b67a6812bfee7365"
-    };
-    
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
 
     // VARIABLES
     // --------------------------------------------------------------------------------
@@ -94,7 +80,7 @@ $(document).ready(function() {
             item.key = performanceRef.getKey();
         }
         //If there is a key, then it has been added to firebase
-        //Get existing key
+        //Get existing
         else {
             let refPath = "performance/" + item.key;
             performanceRef = database.ref(refPath);
