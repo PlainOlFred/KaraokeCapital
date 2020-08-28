@@ -1,7 +1,6 @@
 let constructCount = 0;
 
 function Avatar(song, artist, cover, lyrics){
-    
 
     this.song =song;
     this.artist = artist;
