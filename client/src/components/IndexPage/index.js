@@ -1,37 +1,25 @@
-import React from 'react';
-
-
+import React from "react";
 
 ////Components////
-import Navbar from '../Navbar';
-import SongsCards from '../SongsCards';
+import SongsCards from "../SongsCards";
 
-
-import {favoriteSongs, upNextSongs} from '../utils/songs'
-
+import { favoriteSongs, upNextSongs } from "../utils/songs";
 
 const IndexPage = (props) => {
-    return (
-        <React.Fragment>
-            <Navbar/>
-            <div className="container">
-                <div className="row">
-                    <div className="col s12 m6">
-                        <h1>Favorite Songs</h1>
-                        <SongsCards songs={favoriteSongs}/>
-                    </div>
-                    <div className="col s12 m6">
-                        <h1>Up Next</h1>
-                        <SongsCards songs={upNextSongs}/>
-                    </div>
-                </div>
-            </div>
-            
-
-
-    
-        </React.Fragment>
-    )
-}
+  return (
+    <div className='container'>
+      <div className='row'>
+        <div className='col s12 m6'>
+          <h4>Favorite Songs</h4>
+          <SongsCards songs={favoriteSongs} />
+        </div>
+        <div className='col s12 m6'>
+          <h4>Up Next</h4>
+          <SongsCards songs={upNextSongs} />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default IndexPage;
