@@ -45,3 +45,28 @@ export const upNextSongs = [
     artist: "Artist 1",
   },
 ]
+
+export const searchSongs = [
+    {
+    id: "9",
+   title: "Song Result 1",
+    artist: "Artist 4",
+  },
+  {
+    id: "10",
+    title: "Song Result 2",
+    artist: "Artist 74",
+  },
+  {
+    id: "11",
+    title: "Song Result 3",
+    artist: "Artist 43",
+  },
+
+  {
+    id: "12",
+    title: "Song Result 4",
+    artist: "Artist 443",
+  },
+]
+

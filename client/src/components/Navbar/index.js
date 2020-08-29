@@ -1,30 +1,32 @@
 import React from "react";
 
 const Navbar = (props) => {
+  const  {setActivePage} = props;
+
   return (
-    <div class='navbar-fixed'>
-      <nav>
-        <div className='nav-wrapper'>
-          {/* <a href='#' data-target='sidednav-menu' class='sidenav-trigger'>
-            <i class='material-icons'>menu</i>
-          </a> */}
-          <ul class='right hide-on-med-and-down'>
-            <li>
-              <a>Home</a>
-            </li>
-            <li>
-              <a href='song.html'>Find Songs</a>
-            </li>
-            <li>
-              <a href='map.html'>Find Places</a>
-            </li>
-            <li>
-              <a href='queue.html'>Up Next</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+    <nav className='nav-extended'>
+      <div className='nav-wrapper'>
+        <a className='brand-logo center' onClick={() => setActivePage('index')} >
+          Karaoke Capitol
+        </a>
+      </div>
+      <div className='nav-content'>
+        <ul className='tabs tabs-transparent'>
+          <li className='tab'>
+            <a onClick={() => setActivePage('index')}>Home</a>
+          </li>
+          <li className='tab'>
+            <a onClick={() => setActivePage('song')}>Find Songs</a>
+          </li>
+          <li className='tab'>
+            <a onClick={() => setActivePage('place')}>Find Places</a>
+          </li>
+          <li className='tab'>
+            <a onClick={() => setActivePage('upNext')}>Up Next</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 };
 
