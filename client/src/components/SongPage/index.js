@@ -1,11 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 ////Components////
 import SongsCards from "../SongsCards";
 
 import { searchSongs } from "../utils/songs";
+import { songsApi } from "../../api";
 
 const SongPage = (props) => {
+
+  const searchBySongs = (songs) => {
+
+  }
+
   return (
     <div className='container'>
       <div className='row'>
@@ -21,7 +27,7 @@ const SongPage = (props) => {
         </div>
       </div>
       <div className='row'>
-        <SongsCards songs={searchSongs} />
+        <SongsCards songs={searchSongs} type='search' />
       </div>
     </div>
   );
