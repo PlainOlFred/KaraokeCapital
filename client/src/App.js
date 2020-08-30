@@ -1,30 +1,34 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
+import { Provider } from "react-redux";
 
-import './App.css';
+import { initializeStore } from "./store";
+
+import "./App.css";
 
 ////Components////
-import IndexPage from './components/IndexPage';
-import SongPage from './components/SongPage';
-import Navbar from './components/Navbar';
-import PlacePage from './components/PlacePage';
-import UpNextPage from './components/UpNextPage';
+import Navbar from "./components/Navbar";
+import IndexPage from "./components/IndexPage";
+import SongPage from "./components/SongPage";
+import PlacePage from "./components/PlacePage";
+import UpNextPage from "./components/UpNextPage";
 
 function App() {
-  const [activePage, setActivePage] = useState('index');
+  const [activePage, setActivePage] = useState("index");
 
   const onSetActivePage = (page) => {
-    setActivePage(page)
-  }
+    setActivePage(page);
+  };
 
   return (
-    <div className="App">
-      <Navbar setActivePage={onSetActivePage}/>
-      {activePage == 'index' && <IndexPage />}
-      {activePage == 'song' && <SongPage />}
-      {activePage == 'place' && <PlacePage />}
-      {activePage == 'upNext' && <UpNextPage />}
-      
-    </div>
+    <Provider store={initializeStore()}>
+      <div className='App'>
+        <Navbar setActivePage={onSetActivePage} />
+        {activePage == "index" && <IndexPage />}
+        {activePage == "song" && <SongPage />}
+        {activePage == "place" && <PlacePage />}
+        {activePage == "upNext" && <UpNextPage />}
+      </div>
+    </Provider>
   );
 }
 

@@ -11,6 +11,21 @@ const SongSchema = new Schema({
         type: String,
         required: true
     },
+    inFavorite: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+    inUpNext: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
+    inHistory: {
+        type: Boolean,
+        required: true,
+        default: false,
+    },
     date: {
         type: Date,
         default: Date.now
