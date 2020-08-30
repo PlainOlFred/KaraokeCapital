@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Provider } from "react-redux";
+
+import { initializeStore } from "./store";
+
+import "./App.css";
+
+////Components////
+import Navbar from "./components/Navbar";
+import IndexPage from "./components/IndexPage";
+import SongPage from "./components/SongPage";
+import PlacePage from "./components/PlacePage";
+import UpNextPage from "./components/UpNextPage";
 
 function App() {
+  const [activePage, setActivePage] = useState("index");
+
+  const onSetActivePage = (page) => {
+    setActivePage(page);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={initializeStore()}>
+      <div className='App'>
+        <Navbar setActivePage={onSetActivePage} />
+        {activePage == "index" && <IndexPage />}
+        {activePage == "song" && <SongPage />}
+        {activePage == "place" && <PlacePage />}
+        {activePage == "upNext" && <UpNextPage />}
+      </div>
+    </Provider>
   );
 }
 
