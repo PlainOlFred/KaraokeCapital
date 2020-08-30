@@ -7,22 +7,30 @@ const SongsCard = (props) => {
     const {songs, type} = props
 
     const mapSongs = (songs) => {
-        return songs.map((song) => (<SongsListItem song={song}/>))
+        return songs.map((song) => (<SongsListItem key={song._id} song={song}/>))
     }
 
     const mapSearchSongs = (songs) => {
-        return songs.map((song) => (<SearchListItem song={song}/>))
+        return songs.map((song) => (<SearchListItem key={song.id} song={song}/>))
     }
 
     
     return (
         <div className="card z-depth-5">
             <div className="card-content">
-                {type == 'song' && mapSongs(songs)}
-                {type == 'search' && mapSearchSongs(songs)}
+                {type =="song" && (
+                    <ul className="collection">
+                        {mapSongs(songs)}
+                    </ul>
+                )}
+                {type =="search" && (
+                    <ul className="collection">
+                        {mapSearchSongs(songs)}
+                    </ul>
+                )}
             </div>
         </div>
     )
 }
 
-export default SongsCard
+export default SongsCard;
