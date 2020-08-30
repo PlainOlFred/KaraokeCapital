@@ -1,16 +1,20 @@
 import React, {useEffect} from "react";
+import { connect } from "react-redux";
+import { bindActionCreators} from "redux"; 
+
+import PropTypes from "prop-types";
 
 ////Components////
 import SongsCards from "../SongsCards";
 
-import { searchSongs } from "../utils/songs";
-import { songsApi } from "../../api";
+import { getSongs } from "../../actions/SongActions";
 
 const SongPage = (props) => {
+   const { onGetSongs, songs } = props;
+  useEffect(() => {
+    onGetSongs();
+  },[]);
 
-  const searchBySongs = (songs) => {
-
-  }
 
   return (
     <div className='container'>
@@ -20,17 +24,30 @@ const SongPage = (props) => {
             <form>
               <div className='input-field '>
                 <input id='search' type='search' required />
-                <button className="btn" type="submit" style={{ width: '100vh'}}>Find Songs</button>
+                <button className="btn" type="submit" style={{ display: 'inline-block'}}>Find Songs</button>
               </div>
             </form>
           </div>
         </div>
       </div>
       <div className='row'>
-        <SongsCards songs={searchSongs} type='search' />
+        <SongsCards songs={songs.searchSongs} type='search' />
       </div>
     </div>
   );
 };
 
-export default SongPage;
+SongPage.propTypes = {
+  onGetSongs: PropTypes.func.isRequired,
+  songs: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  songs: state.songs,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onGetSongs: bindActionCreators(getSongs, dispatch),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SongPage);
