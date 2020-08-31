@@ -3,7 +3,6 @@ import React from "react";
 ////Components////
 import SongsCards from "../SongsCards";
 
-
 const UpNextPage = (props) => {
   return (
     <div className='container'>
