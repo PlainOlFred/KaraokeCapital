@@ -3,10 +3,6 @@ import React from "react";
 ////Components////
 import SongsCards from "../SongsCards";
 
-
-
-import { upNextSongs } from "../utils/songs";
-
 const UpNextPage = (props) => {
   return (
     <div className='container'>
