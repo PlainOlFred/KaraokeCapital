@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const db = require('../config/keys'). mongoURI;
+// const db = require('../config/keys'). mongoURI;
 
 
 
 function connectDatabase() {
 
-    mongoose.connect(process.env.MONGODB_URI || db,  
+    mongoose.connect(process.env.MONGODB_URI,  
     { useNewUrlParser: true, useUnifiedTopology: true})
         .then(() => {
             console.log('MongoDB Connected!')
