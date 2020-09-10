@@ -19,6 +19,7 @@ if(process.env.NODE_ENV === 'production') {
 
 ////Routes////
 app.use('/api/songs/', require('./routes/api/songs'));
+app.use('/', require('./routes/html'));
 
 // Database Connection
   mongoose
