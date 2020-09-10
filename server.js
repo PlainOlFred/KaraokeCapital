@@ -1,29 +1,40 @@
 const express = require('express');
-const db = require('./db/database');
-const path = require('path');
+const mongoose = require("mongoose");
 
 
+const db = require('./config/keys').mongoURI;
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
-    // app.get('*', function(req, res) {
-    //     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-    // })
 }
 
 
 
+
+////Routes////
 app.use('/api/songs/', require('./routes/api/songs'));
 
+// Database Connection
+  mongoose
+    .connect(process.env.MONGODB_URI || 'mongodb://localhost/karaoke-capital', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    })
+    .then(() => {
+      console.log("MongoDB Connected!");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 
-
-const PORT = process.env.PORT || 5000;
-db();
 
 app.listen(PORT, function serverConnected() {
     console.log(`Karaoke Capital App listening on PORT ${PORT}`)
