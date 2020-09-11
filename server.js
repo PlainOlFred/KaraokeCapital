@@ -1,25 +1,23 @@
 const express = require('express');
 const mongoose = require("mongoose");
 
-
-const db = require('./config/keys').mongoURI;
+const routes = require('./routes')
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-if(process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
-}
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+} 
 
 
 
 
 ////Routes////
-app.use('/api/songs/', require('./routes/api/songs'));
-app.use('/', require('./routes/html'));
+app.use(routes);
 
 // Database Connection
   mongoose
@@ -40,5 +38,3 @@ app.use('/', require('./routes/html'));
 app.listen(PORT, function serverConnected() {
     console.log(`Karaoke Capital App listening on PORT ${PORT}`)
 })
-
-
