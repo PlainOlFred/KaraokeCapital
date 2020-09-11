@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require("mongoose");
+const path = require('path');
+
 
 const routes = require('./routes')
 
@@ -13,6 +15,10 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 } 
 
+app.get('/', function(req, res) {
+   res.sendFile(path.join(__dirname, "../client/build/index.html"))
+})
+
 
 
 
@@ -22,10 +28,8 @@ app.use(routes);
 // Database Connection
   mongoose
     .connect(process.env.MONGODB_URI || 'mongodb://localhost/karaoke-capital', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       useCreateIndex: true,
-      useFindAndModify: false,
+      useNewUrlParser: true
     })
     .then(() => {
       console.log("MongoDB Connected!");
