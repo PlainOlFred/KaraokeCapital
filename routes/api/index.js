@@ -3,7 +3,7 @@ const path = require('path');
 
 const songRoutes = require('./songs');
 
-// router.use('/songs', songRoutes);
+router.use('/songs', songRoutes);
 
 
 module.exports = router;
