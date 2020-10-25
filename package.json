@@ -8,11 +8,9 @@
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
+    "client": "npm start && npm run start",
     "install": "cd client && npm install",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run bulid --prefix client",
+    "heroku-postbuild": "npm run build",
     "build": "cd client && npm run build"
   },
   "repository": {
