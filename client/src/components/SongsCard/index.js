@@ -18,16 +18,12 @@ const SongsCard = (props) => {
     return (
         <div className="card z-depth-5">
             <div className="card-content">
-                {type =="song" && (
+                {type ==="song" && (
                     <ul className="collection">
                         {mapSongs(songs)}
                     </ul>
                 )}
-                {type =="search" && (
-                    <ul className="collection">
-                        {mapSearchSongs(songs)}
-                    </ul>
-                )}
+                
             </div>
         </div>
     )

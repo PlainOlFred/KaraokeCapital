@@ -1,12 +1,11 @@
 const express = require('express');
-const mongoose = require("mongoose");
 const path = require('path');
 
 
 const routes = require('./routes')
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -16,7 +15,7 @@ if (process.env.NODE_ENV === "production") {
 } 
 
 app.get('/', function(req, res) {
-   res.sendFile(path.join(__dirname, "./client/build/index.html"))
+   res.sendFile(path.join(__dirname, "./client/public/index.html"))
 })
 
 
@@ -24,17 +23,7 @@ app.get('/', function(req, res) {
 app.use(routes);
 
 // Database Connection
-  mongoose
-    .connect(process.env.MONGODB_URI || 'mongodb://localhost/karaoke-capital', {
-      useCreateIndex: true,
-      useNewUrlParser: true
-    })
-    .then(() => {
-      console.log("MongoDB Connected!");
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+
 
 
 app.listen(PORT, function serverConnected() {

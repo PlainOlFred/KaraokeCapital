@@ -5,12 +5,10 @@ import { initializeStore } from "./store";
 
 import "./App.css";
 
-////Components////
+////Components and Containers////
+import IndexPage from "./containers/IndexPage";
 import Navbar from "./components/Navbar";
-import IndexPage from "./components/IndexPage";
-import SongPage from "./components/SongPage";
-import PlacePage from "./components/PlacePage";
-import UpNextPage from "./components/UpNextPage";
+
 
 function App() {
   const [activePage, setActivePage] = useState("index");
@@ -23,10 +21,7 @@ function App() {
     <Provider store={initializeStore()}>
       <div className='App'>
         <Navbar setActivePage={onSetActivePage} />
-        {activePage == "index" && <IndexPage />}
-        {activePage == "song" && <SongPage />}
-        {activePage == "place" && <PlacePage />}
-        {activePage == "upNext" && <UpNextPage />}
+        {activePage === "index" && <IndexPage />}
       </div>
     </Provider>
   );
