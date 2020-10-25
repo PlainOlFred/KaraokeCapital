@@ -12,7 +12,8 @@ const IndexPage = (props) => {
   const { onGetSongs, songs } = props;
   
   useEffect(() => {
-    onGetSongs();
+    // onGetSongs();
+    console.log("mount")
   },[]);
 
 

@@ -18,7 +18,8 @@ if (process.env.NODE_ENV === "production") {
 }
 
 ////Routes////
-app.use(routes);
+// app.use(routes);
+
 router.use("*",function(req, res) {
     res.sendFile(path.join(__dirname, "client", "public", "index.html"))
 })
