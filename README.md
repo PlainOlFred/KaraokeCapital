@@ -1,5 +1,4 @@
 
-![alt text](https://github.com/sarahbmcl/CapCityKaraoke/blob/master/images/readme%20logo%202.png "Logo")
 
 ### Welcome to CapCityKaraoke!
 
