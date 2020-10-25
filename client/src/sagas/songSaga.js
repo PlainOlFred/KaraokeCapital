@@ -1,8 +1,16 @@
 import { all, take, put, takeEvery, call } from "redux-saga/effects";
 
-import { GET_SONGS, SET_SONGS } from "../actions/SongActions";
+import { GET_SONGS, setSongs } from "../containers/IndexPage/index/actions";
 
-import { fetchSongsApi } from "../api/songs";
+import {fetchSongsApi} from "../containers/IndexPage/index/api";
+
+
+function* fetchSongs() {
+  const songs = yield call(fetchSongsApi);
+  // console.log(songs)
+
+  return songs;
+}
 
 function* watchForGetSong() {
   yield takeEvery(GET_SONGS, handleGetSongs);
@@ -10,31 +18,9 @@ function* watchForGetSong() {
 
 function* handleGetSongs() {
   try {
-    const songs = yield call(fetchSongsApi);
+    const songs = yield call(fetchSongs);
 
-    const formattedSongs = yield {
-      favoriteSongs: [],
-      upNextSongs: [],
-      historySongs: [],
-    };
-
-    yield songs.forEach((song) => {
-      if (song.inFavorite) {
-        formattedSongs.favoriteSongs.push(song);
-      }
-      if (song.inUpNext) {
-        formattedSongs.upNextSongs.push(song);
-      }
-      if (song.inHistory) {
-        formattedSongs.historySongs.push(song);
-      }
-    });
-    console.log("formattedSongs", formattedSongs);
-
-    yield put({
-      type: SET_SONGS,
-      payload: formattedSongs,
-    });
+    yield put(setSongs(songs));
   } catch (error) {
       console.warn("Error occured in handleGetSongs saga", error)
   }
