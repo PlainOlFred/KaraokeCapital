@@ -14,6 +14,7 @@ if (process.env.NODE_ENV === "production") {
 ////Routes////
 app.use(routes);
 
+
 app.listen(PORT, function serverConnected() {
   console.log(`Karaoke Capital App listening on PORT ${PORT}`);
 });
