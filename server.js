@@ -1,8 +1,6 @@
 const express = require("express");
 const path = require("path");
-
 const routes = require("./routes");
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -15,12 +13,6 @@ if (process.env.NODE_ENV === "production") {
 
 ////Routes////
 app.use(routes);
-
-// app.get("/", function (req, res) {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
-
-// Database Connection
 
 app.listen(PORT, function serverConnected() {
   console.log(`Karaoke Capital App listening on PORT ${PORT}`);
