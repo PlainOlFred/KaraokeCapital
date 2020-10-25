@@ -16,9 +16,9 @@ if (process.env.NODE_ENV === "production") {
 ////Routes////
 app.use(routes);
 
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// app.get("/", function (req, res) {
+//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 // Database Connection
 
